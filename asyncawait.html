@@ -1,0 +1,47 @@
+<!-- <html>
+<body>
+   <div id = "output">The promise is being solved <br> </div>
+   <script>
+      async function solvePromise() {
+         const promise = new Promise((resolve, reject) => {
+            setTimeout(() => { // Setting up timeout for promises
+               resolve('The promise is solved after 2 seconds');
+            }, 2000);
+         })
+         const result = await promise;
+         document.getElementById('output').innerHTML += result;
+      }
+      solvePromise();
+   </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async await</title>
+</head>
+<body>
+    <button onclick="getData()" > Get Data</button>
+    <div id="demo"> </div>
+
+    <script>
+        let output = document.getElementById("demo");
+        async function getData(){
+            try {
+                let response = await fetch('https://api.github.com/users');//pauses executiton to get the data
+                let data = await response.json();//pause execution to convert data to json
+
+                output.innerHTML += "login: " + data[0].login + "<br>";
+            output.innerHTML += "id: " + data[0].id + "<br>";
+            output.innerHTML += "node_id: " + data[0].node_id + "<br>";
+            output.innerHTML += "avatar_url: " + data[0].avatar_url + "<br>";
+            } catch (error) {
+                output.innerHTML += "The error is: " + json.stringify(error);
+            }
+        }
+    </script>
+</body>
+</html>
